@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Task1</string>
+    <string name="InputText">Введите текст</string>
+    <string name="OK">ОК</string>
+    <string name="DeleteThis">Удалите это</string>
+    <string name="DeleteLastChar">Удалите Последний символ</string>
+    <string name="DeleteFirstChar">Удалите первый символ</string>
+</resources>

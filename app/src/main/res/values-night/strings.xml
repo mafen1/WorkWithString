@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="InputText">Введите текст</string>
+    <string name="OK">ОК</string>
+    <string name="DeleteThis">Удалите это</string>
+    <string name="DeleteLastChar">Удалите Последний символ</string>
+    <string name="DeleteFirstChar">Удалите первый символ</string>
+</resources>
