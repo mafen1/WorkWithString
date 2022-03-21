@@ -1,6 +1,7 @@
 package com.example.task1
 
 import android.os.Bundle
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.task1.databinding.ActivityMainBinding
@@ -12,7 +13,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val TAG = "TAG"
     private var string = ""
-    private var string1 = ""
+    private var stringDelete = ""
+    val i = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 INPUT_METHOD_SERVICE
             ) as InputMethodManager
             imm.hideSoftInputFromWindow(binding.edText.getWindowToken(), 0)
+
             if (binding.edText.text.toString() == "") {
                 Snackbar.make(
                     binding.root,
@@ -44,29 +47,39 @@ class MainActivity : AppCompatActivity() {
                 INPUT_METHOD_SERVICE
             ) as InputMethodManager
             imm.hideSoftInputFromWindow(binding.edText.getWindowToken(), 0)
-            if (binding.edText.text.toString() == "") {
+
+            if (binding.edText.text.toString() != "") {
+
+                string = binding.edText.text.toString()
+                Log.d(TAG,string)
+                val deleteLastChar = string.dropLast(1)
+                Log.d(TAG, deleteLastChar)
+                binding.tvResult.text = deleteLastChar
+            } else {
                 Snackbar.make(
                     binding.root,
                     "Введите хотя бы одно значение",
                     Snackbar.LENGTH_LONG
                 ).show()
-            } else {
-                string = binding.edText.text.toString()
-                val deleteLastChar = string.dropLast(1)
-                binding.tvResult.text = deleteLastChar
             }
         }
 
         binding.btnConfirm.setOnClickListener{
+            //binding.edText.text.contains(binding.edDeleteText.text)
             val imm = getSystemService(
                 INPUT_METHOD_SERVICE
             ) as InputMethodManager
             imm.hideSoftInputFromWindow(binding.edDeleteText.getWindowToken(), 0)
-            string1 = binding.edDeleteText.text.toString()
-            if (binding.edDeleteText.text.toString() == binding.edText.text.toString()){
-                val lengthText = binding.edDeleteText.text.length
-                val text = string1.drop(lengthText)
+            if (binding.edText.text.contains(binding.edDeleteText.text)){
+                string = binding.edText.text.toString()
+                stringDelete = binding.edDeleteText.text.toString()
+
+                val lengthText = stringDelete.length
+                Log.d(TAG, lengthText.toString())
+                val text = string.drop(lengthText)
+                Log.d(TAG, text)
                 binding.tvResult.text = text
+
             }else{
                 Snackbar.make(
                     binding.root,
@@ -76,5 +89,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
+    fun String.chunked(size: Int): List<String> {
+        val nChunks = length / size
+        return (0 until nChunks).map { substring(it * size, (it + 1) * size) }
+    }
 }
