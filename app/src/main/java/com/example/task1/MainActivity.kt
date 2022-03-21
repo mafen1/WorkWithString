@@ -1,7 +1,7 @@
 package com.example.task1
 
 import android.os.Bundle
-import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.task1.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
@@ -23,6 +23,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun initButton(){
         binding.btnDeleteFirstChar.setOnClickListener {
+            val imm = getSystemService(
+                INPUT_METHOD_SERVICE
+            ) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.edText.getWindowToken(), 0)
             if (binding.edText.text.toString() == "") {
                 Snackbar.make(
                     binding.root,
@@ -36,6 +40,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.btnDeleteLastChar.setOnClickListener {
+            val imm = getSystemService(
+                INPUT_METHOD_SERVICE
+            ) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.edText.getWindowToken(), 0)
             if (binding.edText.text.toString() == "") {
                 Snackbar.make(
                     binding.root,
@@ -50,6 +58,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnConfirm.setOnClickListener{
+            val imm = getSystemService(
+                INPUT_METHOD_SERVICE
+            ) as InputMethodManager
+            imm.hideSoftInputFromWindow(binding.edDeleteText.getWindowToken(), 0)
             string1 = binding.edDeleteText.text.toString()
             if (binding.edDeleteText.text.toString() == binding.edText.text.toString()){
                 val lengthText = binding.edDeleteText.text.length

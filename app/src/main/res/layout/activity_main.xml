@@ -82,13 +82,11 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="304dp"
         android:gravity="center"
-
-        android:text=""
-        android:textSize="45sp"
+        android:text="Тут будет результат"
+        android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edDeleteText"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.962" />
 </androidx.constraintlayout.widget.ConstraintLayout>
