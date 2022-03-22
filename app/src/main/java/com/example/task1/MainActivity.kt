@@ -11,10 +11,8 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val TAG = "TAG"
     private var string = ""
     private var stringDelete = ""
-    val i = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +49,7 @@ class MainActivity : AppCompatActivity() {
             if (binding.edText.text.toString() != "") {
 
                 string = binding.edText.text.toString()
-                Log.d(TAG,string)
                 val deleteLastChar = string.dropLast(1)
-                Log.d(TAG, deleteLastChar)
                 binding.tvResult.text = deleteLastChar
             } else {
                 Snackbar.make(
@@ -75,9 +71,7 @@ class MainActivity : AppCompatActivity() {
                 stringDelete = binding.edDeleteText.text.toString()
 
                 val lengthText = stringDelete.length
-                Log.d(TAG, lengthText.toString())
                 val text = string.replace(stringDelete, "")
-                Log.d(TAG, text)
                 binding.tvResult.text = text
 
             }else{
@@ -88,9 +82,5 @@ class MainActivity : AppCompatActivity() {
                 ).show()
             }
         }
-    }
-    fun String.chunked(size: Int): List<String> {
-        val nChunks = length / size
-        return (0 until nChunks).map { substring(it * size, (it + 1) * size) }
     }
 }
