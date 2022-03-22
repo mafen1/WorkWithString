@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
                 val lengthText = stringDelete.length
                 Log.d(TAG, lengthText.toString())
-                val text = string.drop(lengthText)
+                val text = string.replace(stringDelete, "")
                 Log.d(TAG, text)
                 binding.tvResult.text = text
 
